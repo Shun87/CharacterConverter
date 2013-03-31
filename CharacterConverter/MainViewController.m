@@ -43,6 +43,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpa]
     slideFontSize.minimumValue = 16;
     slideFontSize.maximumValue = 50;
     slideFontSize.value = 25;
+    [slideFontSize setMinimumTrackTintColor:HEXCOLOR(0x545d6a, 1)];
     self.textView.font = [UIFont systemFontOfSize:slideFontSize.value];
 //
     [self.view addSubview:toolView];
