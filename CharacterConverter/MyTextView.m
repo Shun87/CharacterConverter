@@ -10,16 +10,4 @@
 
 @implementation MyTextView
 
--(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-//    if (action == @selector(copy:))
-//        return NO;
-//    if (action == @selector(cut:))
-        return NO;
-    if (action == @selector(copy:))
-    {
-        
-    }
-    //return [super canPerformAction:action withSender:sender];
-}
-
 @end

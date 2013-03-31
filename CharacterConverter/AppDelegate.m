@@ -13,6 +13,10 @@
 #define OUTLEN 255
 #define CCONV_BUFFER_SIZE 4096
 #define CCONV_STRLEN_SIZE 256
+#define HEXCOLOR(rgbValue, alpa) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpa]
 @implementation AppDelegate
 
 - (void)dealloc
@@ -32,8 +36,9 @@
     self.window.rootViewController = self.navigationController;
     self.navigationController.navigationBarHidden = YES;
     [self.window makeKeyAndVisible];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"base.png"] forBarMetrics:UIBarMetricsDefault];
-    
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"base.png"] forBarMetrics:UIBarMetricsDefault];
+//    
+    [[UINavigationBar appearance] setTintColor:HEXCOLOR(0x545d6a, 1)];
     UIImage *barButtonImage = [[UIImage imageNamed:@"barButtonBK.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0,15,0,6)];
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:1 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];

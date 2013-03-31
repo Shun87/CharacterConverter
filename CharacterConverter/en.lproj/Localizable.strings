@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  CharacterConverter
+
+  Created by chenshun on 13-3-31.
+  Copyright (c) 2013年 ChenShun. All rights reserved.
+*/
+"Copy" = "Copy";
+"paste" = "Paste";
+"clear" = "Clear";
+"simplified" = "simplified";
+"traditional" = "Traditional";
+"share" = "Share";
+"about" = "About";
+"cancel" = "Cancel";
+"ok" = "Ok";
+"hide" = "Hide";
+"sendfeedback" = "Send feedback";
+"sina" = "sina weibo";
+"softversion" = "version: 1.0";
+"des" = "The software supports phrase and text conversion with simplified and traditional, using the new thesaurus, discarded the traditional which is no longer in use, so that conversion is more close to life, more humane, more accurate. If any question welcome feedback";
