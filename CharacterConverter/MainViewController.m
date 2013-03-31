@@ -100,14 +100,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpa]
     
     // Note: Edit SampleConstants.h to provide a definition for kSampleAdUnitID
     // before compiling.
-    self.adBanner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    self.adBanner.adUnitID = kSampleAdUnitID;
-    self.adBanner.delegate = self;
-    [self.adBanner setRootViewController:self.navigationController];
-    [self.view addSubview:self.adBanner];
-    self.adBanner.center =
-    CGPointMake(self.view.center.x, self.adBanner.center.y);
-    [self.adBanner loadRequest:[self createRequest]];
+//    self.adBanner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    self.adBanner.adUnitID = kSampleAdUnitID;
+//    self.adBanner.delegate = self;
+//    [self.adBanner setRootViewController:self.navigationController];
+//    [self.view addSubview:self.adBanner];
+//    self.adBanner.center =
+//    CGPointMake(self.view.center.x, self.adBanner.center.y);
+//    [self.adBanner loadRequest:[self createRequest]];
 }
 
 
