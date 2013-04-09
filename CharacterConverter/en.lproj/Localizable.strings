@@ -18,4 +18,6 @@
 "sendfeedback" = "Send feedback";
 "sina" = "sina weibo";
 "softversion" = "version: 1.0";
+"no_emial" = "No Email Accounts";
+"Error_e" = "There are no email accounts configured.You can add or creat a Email account in Settings.";
 "des" = "The software supports phrase and text conversion with simplified and traditional, using the new thesaurus, discarded the traditional which is no longer in use, so that conversion is more close to life, more humane, more accurate. If any question welcome feedback";

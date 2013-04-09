@@ -45,14 +45,14 @@
         }
         else
         {
-            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的新浪微博账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
             [loginAlert show];
             [loginAlert release];
         }
     }
     else
     {
-        UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Facebook的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+        UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到新浪微博的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
         [osAlert show];
         [osAlert release];
     }
@@ -114,14 +114,48 @@
 
 - (void)sendFeedback
 {
-    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-	picker.mailComposeDelegate = self;
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+	if (mailClass != nil)
+	{
+		// We must always check whether the current device is configured for sending emails
+		if ([mailClass canSendMail])
+		{
+            MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+            picker.mailComposeDelegate = self;
+            
+            [picker setSubject:@"ConvConverter"];
+            NSArray *toRecipients = [NSArray arrayWithObject:@"chenshun87@126.com"];
+            [picker setToRecipients:toRecipients];
+            [viewController presentModalViewController:picker animated:YES];
+            [picker release];
+		}
+        else
+        {
+            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no_emial", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Error_e", nil)] delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles: nil];
+            [loginAlert show];
+            [loginAlert release];
+        }
+	}
+	else
+	{
+        UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no_emial", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Error_e", nil)] delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles: nil];
+        [loginAlert show];
+        [loginAlert release];
+	}
+}
+
+#pragma mark -
+#pragma mark Workaround
+
+// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:chenshun87@126.com?&subject=ConvConverter";
 	
-	[picker setSubject:@"CharacterConverter"];
-    NSArray *toRecipients = [NSArray arrayWithObject:@"chenshun87@126.com"];
-    [picker setToRecipients:toRecipients];
-    [viewController presentModalViewController:picker animated:YES];
-	[picker release];
+	NSString *email = [NSString stringWithFormat:@"%@", recipients];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 // Displays an email composition interface inside the application. Populates all the Mail fields.
